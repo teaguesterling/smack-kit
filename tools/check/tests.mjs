@@ -28,9 +28,11 @@ export function tests(appDir) {
     const exp = block.match(/^\s*expected: (.*)$/m), act = block.match(/^\s*actual: (.*)$/m);
     if (exp && act) msg += ` expected ${exp[1].trim()}, got ${act[1].trim()}`;
     let name = m[1].trim();
-    if (name.startsWith('/') && msg === 'test failed') { // the file threw while loading: take the error from the comments above
+    // The file threw while loading: the test is named after the file (absolute before Node 22, relative to cwd
+    // from 22 on). Take the error from the comments above.
+    if ((name.startsWith('/') || /\.test\.mjs$/.test(name)) && msg === 'test failed') {
       const thrown = lines.slice(0, i).reverse().find(l => /^# \w*Error\b/.test(l));
-      name = path.relative(appDir, name); msg = `failed to load: ${thrown ? thrown.slice(2).trim() : msg}`;
+      if (name.startsWith('/')) name = path.relative(appDir, name); msg = `failed to load: ${thrown ? thrown.slice(2).trim() : msg}`;
     }
     if (loc) out.push({ file: path.relative(appDir, loc[1].startsWith('file:') ? fileURLToPath(loc[1]) : loc[1]), line: Number(loc[2]), rule: 'tests', message: name.startsWith('checks/') ? msg : `${name}: ${msg}` });
     else out.push({ file: name.startsWith('/') ? path.relative(appDir, name) : 'checks', line: 1, rule: 'tests', message: `failed to run: ${msg}` });
