@@ -1,0 +1,4 @@
+[
+  {"name":"Starter","speed":"slow","pool":["a","s","d","f"]},
+  {"name":"Home row","speed":"medium","pool":["a","s","d","f","j","k","l"]}
+]

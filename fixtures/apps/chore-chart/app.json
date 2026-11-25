@@ -1,0 +1,1 @@
+{"name":"chore-chart","version":"0.1.0","kit":"0.0.0-standin","store":{"done":{"sealed":false}},"models":{"points":{"needs":["json"],"context":2000}},"checks":["schema","tests"],"screens":["today=2026-11-11&tab=today","today=2026-11-11&tab=week","today=2026-11-11&tab=board"]}

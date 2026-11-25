@@ -1,0 +1,8 @@
+id: rl-01
+app: reading-log
+category: definitions
+tier: 2
+prompt: "Add audiobooks as a kind of reading."
+may_touch: ["definitions.yaml", "data/kinds.json", "data/schema/kinds.json"]
+verify: verify/rl-01.test.mjs
+decline: false

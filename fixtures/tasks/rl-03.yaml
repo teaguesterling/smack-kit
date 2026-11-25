@@ -1,0 +1,8 @@
+id: rl-03
+app: reading-log
+category: layout
+tier: 2
+prompt: "Weeks start on Sunday in our house."
+may_touch: ["screens/*.js", "seams/*.js", "app.css"]
+verify: verify/rl-03.test.mjs
+decline: false

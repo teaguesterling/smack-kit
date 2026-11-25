@@ -1,0 +1,9 @@
+id: rl-04
+app: reading-log
+category: layout
+tier: 2
+prompt: "The calendar days are too small to tap on my phone."
+may_touch: ["app.css", "screens/month.js"]
+verify: verify/rl-04.test.mjs
+decline: false
+seed: rl-04

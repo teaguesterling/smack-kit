@@ -1,0 +1,13 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["name", "speed", "pool"],
+    "additionalProperties": false,
+    "properties": {
+      "name": {"type": "string", "maxLength": 24},
+      "speed": {"type": "string", "enum": ["super-slow", "slow", "medium", "fast"], "x-term": "speed"},
+      "pool": {"type": "array", "items": {"type": "string", "maxLength": 12}}
+    }
+  }
+}

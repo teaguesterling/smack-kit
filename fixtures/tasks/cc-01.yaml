@@ -1,0 +1,9 @@
+id: cc-01
+app: chore-chart
+category: data
+tier: 1
+prompt: "Add feeding the cat, every day, 1 point."
+may_touch: ["data/chores.json"]
+expect_regions: ["data/chores.json"]
+verify: verify/cc-01.test.mjs
+decline: false

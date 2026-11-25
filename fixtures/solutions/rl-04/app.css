@@ -1,0 +1,6 @@
+.month-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.month-grid .dow { font-size: 12px; text-align: center; opacity: .8; }
+.day { min-height: 44px; min-width: 44px; border: 1px solid color-mix(in srgb, var(--kit-text) 20%, transparent); border-radius: 6px; background: var(--kit-bg); color: var(--kit-text); font: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2px; }
+.day.read { background: color-mix(in srgb, var(--kit-accent) 18%, var(--kit-bg)); }
+.day .mins { font-size: 11px; }
+.week-goal { margin: 4px 0; }

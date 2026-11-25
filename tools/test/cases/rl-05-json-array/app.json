@@ -1,0 +1,1 @@
+{"name":"reading-log","version":"0.1.0","kit":"0.0.0-standin","store":{"entries":{"sealed":false}},"models":{"suggest":{"purpose":"Suggest each child's next book from their logged reading"}},"checks":["schema","tests","layout"],"screens":["today=2026-11-11&tab=month","today=2026-11-11&tab=add","today=2026-11-11&tab=suggest"]}

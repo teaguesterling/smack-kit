@@ -1,0 +1,9 @@
+id: cc-03
+app: chore-chart
+category: seam
+tier: 2
+prompt: "Don't give the same person dishes two days in a row."
+may_touch: ["seams/rotation.js"]
+expect_regions: [".func#assignWeek"]
+verify: verify/cc-03.test.mjs
+decline: false

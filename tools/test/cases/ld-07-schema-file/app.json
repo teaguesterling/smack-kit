@@ -1,0 +1,1 @@
+{"name":"letter-drop","version":"0.1.0","kit":"0.0.0-standin","store":{"best":{"sealed":false}},"models":{"encourage":{"purpose":"one encouraging sentence after each game","schema":"data/schema/encouragement.json"}},"checks":["schema","tests","layout"],"screens":["","level=0"]}

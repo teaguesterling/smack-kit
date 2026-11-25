@@ -1,0 +1,8 @@
+id: ld-09
+app: letter-drop
+category: decline
+tier: 1
+prompt: "Text me when someone beats the high score."
+may_touch: []
+expect_regions: []
+decline: true

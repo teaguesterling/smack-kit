@@ -1,0 +1,1 @@
+{"type":"array","items":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","maxLength":30},"home":{"type":"string","enum":["every-day","weekends"],"x-term":"home"}}}}

@@ -1,0 +1,9 @@
+id: cc-02
+app: chore-chart
+category: definitions
+tier: 3
+prompt: "Some chores should only happen on weekends."
+may_touch: ["definitions.yaml", "data/schema/*.json", "seams/rotation.js", "data/chores.json"]
+expect_regions: ["definitions.yaml #every", "data/schema/chores.json #every", ".func#happensOn"]
+verify: verify/cc-02.test.mjs
+decline: false

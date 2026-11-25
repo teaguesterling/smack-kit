@@ -1,0 +1,4 @@
+terms:
+  size:
+    means: "how big a thing is"
+    values: [small, large]

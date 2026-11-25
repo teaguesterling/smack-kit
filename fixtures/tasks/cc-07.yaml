@@ -1,0 +1,9 @@
+id: cc-07
+app: chore-chart
+category: copy
+tier: 2
+prompt: "Call them jobs, not chores, on the screens."
+may_touch: ["screens/*.js", "index.html"]
+expect_regions: [".func#render", ".func#addForm"]
+verify: verify/cc-07.test.mjs
+decline: false

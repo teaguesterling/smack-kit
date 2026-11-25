@@ -1,0 +1,12 @@
+{
+  "$comment": "Where each Tiiny role runs for this install (design 6.9). Copy profile.example.json to profile.json; profile.json is not committed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dev", "inference", "hosting", "storage"],
+  "properties": {
+    "dev": {"enum": ["tiiny", "elsewhere"]},
+    "inference": {"type": "object", "additionalProperties": false, "required": ["on"], "properties": {"on": {"enum": ["tiiny", "openai"]}, "endpoint": {"type": "string"}}},
+    "hosting": {"enum": ["tiiny", "static"]},
+    "storage": {"enum": ["tiiny", "tote"]}
+  }
+}

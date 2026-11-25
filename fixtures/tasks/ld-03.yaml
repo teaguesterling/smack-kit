@@ -1,0 +1,9 @@
+id: ld-03
+app: letter-drop
+category: seam
+tier: 2
+prompt: "Give a bonus for 5 in a row."
+may_touch: ["seams/score.js"]
+expect_regions: [".func#scoreFor"]
+verify: verify/ld-03.test.mjs
+decline: false

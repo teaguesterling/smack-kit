@@ -1,0 +1,11 @@
+# What the words in this app mean. data/schema/ mirrors the term values (x-term).
+terms:
+  kind:
+    means: "what sort of reading an entry was"
+    values: [book, comic, magazine]
+  reader:
+    means: "a child whose reading is logged"
+good:
+  month:
+    - "a child can see at a glance which days they read"
+    - check: "a day's total is the sum of that day's entries"

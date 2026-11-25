@@ -1,0 +1,20 @@
+# What the words in this app mean. Schemas in data/schema/ mirror the term values (x-term).
+terms:
+  every:
+    means: "how often a chore comes round"
+    values: [daily, weekly, school-days]
+    notes:
+      weekly: "once, on the first day of the week (Monday)"
+      school-days: "Monday to Friday"
+  points:
+    means: "how much a chore is worth on the board"
+    values: [1, 2, 3, 4, 5]
+  person:
+    means: "someone in the family who does chores"
+  home:
+    means: "which days a person is home to do chores; a person with no home value is home every day"
+    values: [every-day, weekends]
+good:
+  week:
+    - "everyone gets work every day they are home"
+    - check: "no person has two more chores than another in a week"

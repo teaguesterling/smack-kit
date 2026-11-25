@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job chart</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+import { applyTheme, header, tabBar } from './kit/parts.js';
+import { openStore } from './kit/store.js';
+import { assignWeek, addDays } from './seams/rotation.js';
+import * as today from './screens/today.js';
+import * as week from './screens/week.js';
+import * as board from './screens/board.js';
+
+const get = p => fetch(p).then(r => r.json());
+const [theme, people, baseChores] = await Promise.all([get('theme.json'), get('data/people.json'), get('data/chores.json')]);
+applyTheme(theme);
+const schema = await get('data/schema/chores.json');
+const store = openStore('chore-chart');
+
+const q = new URLSearchParams(location.search);
+const todayIso = q.get('today') ?? new Date().toISOString().slice(0, 10);
+const dow = (new Date(`${todayIso}T00:00:00Z`).getUTCDay() + 6) % 7;
+const weekStart = addDays(todayIso, -dow);
+const screens = { today, week, board };
+const tabs = [{ id: 'today', label: 'Today' }, { id: 'week', label: 'Week' }, { id: 'board', label: 'Board' }];
+let active = q.get('tab') ?? 'today';
+
+const state = {
+  people, today: todayIso, weekStart,
+  dates: [0, 1, 2, 3, 4, 5, 6].map(i => addDays(weekStart, i)),
+  terms: { every: schema.items.properties.every.enum, points: schema.items.properties.points.enum },
+  chores: [...baseChores, ...((await store.get('extraChores')) ?? [])],
+  done: (await store.get('done')) ?? [],
+  isDone: a => state.done.some(d => d.date === a.date && d.person === a.person && d.chore === a.chore),
+  actions: {
+    async toggleDone(a) {
+      state.done = state.isDone(a) ? state.done.filter(d => !(d.date === a.date && d.person === a.person && d.chore === a.chore)) : [...state.done, a];
+      await store.set('done', state.done); draw();
+    },
+    async addChore(c) {
+      const extra = [...((await store.get('extraChores')) ?? []), c];
+      await store.set('extraChores', extra); state.chores = [...baseChores, ...extra]; draw();
+    },
+  },
+};
+
+const root = document.getElementById('app');
+function draw() {
+  state.week = assignWeek(state.chores, state.people, state.weekStart);
+  const main = document.createElement('main');
+  screens[active].render(main, state);
+  root.replaceChildren(header('Job chart'), main, tabBar(tabs, active, id => { active = id; draw(); }));
+}
+draw();
+</script>
+</body>
+</html>

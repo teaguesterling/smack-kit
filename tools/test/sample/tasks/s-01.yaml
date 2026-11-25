@@ -1,0 +1,9 @@
+id: s-01
+app: sample
+category: seam
+tier: 2
+prompt: "Make double add one more."
+may_touch: ["seams/double.js"]
+expect_regions: [".func#double"]
+verify: verify/s-01.test.mjs
+decline: false

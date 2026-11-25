@@ -1,0 +1,10 @@
+id: ld-04
+app: letter-drop
+category: layout
+tier: 2
+prompt: "The score is hidden behind the top bar on small phones."
+may_touch: ["app.css", "screens/game.js"]
+expect_regions: ["app.css", ".func#startGame"]
+verify: verify/ld-04.test.mjs
+decline: false
+seed: ld-04

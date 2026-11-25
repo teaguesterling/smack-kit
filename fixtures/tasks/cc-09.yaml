@@ -1,0 +1,9 @@
+id: cc-09
+app: chore-chart
+category: roles
+tier: 1
+prompt: "I want to host this on my own server but use the Tiiny for the AI."
+may_touch: [".kit/profile.json"]
+expect_regions: [".kit/profile.example.json"]
+verify: verify/cc-09.test.mjs
+decline: false

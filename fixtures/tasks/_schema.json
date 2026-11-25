@@ -1,0 +1,18 @@
+{
+  "$comment": "Task file format (fixtures/tasks/<id>.yaml). tools/fixture.mjs loadTask() enforces it; unknown keys are refused.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "app", "category", "tier", "prompt", "may_touch", "decline"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z]+-[0-9]{2}$"},
+    "app": {"type": "string"},
+    "category": {"enum": ["data", "definitions", "seam", "theme", "layout", "copy", "model", "store", "roles", "decline"]},
+    "tier": {"enum": [1, 2, 3, 4]},
+    "prompt": {"type": "string"},
+    "may_touch": {"type": "array", "items": {"type": "string"}},
+    "expect_regions": {"type": "array", "items": {"type": "string"}},
+    "verify": {"type": "string"},
+    "decline": {"type": "boolean"},
+    "seed": {"type": "string", "$comment": "fixtures/seeds/<seed>/ is laid over the app at start (a seeded defect for this task only)"}
+  }
+}

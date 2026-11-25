@@ -1,0 +1,9 @@
+id: cc-04
+app: chore-chart
+category: seam
+tier: 2
+prompt: "Double points on Saturdays."
+may_touch: ["seams/points.js"]
+expect_regions: [".func#pointsFor"]
+verify: verify/cc-04.test.mjs
+decline: false

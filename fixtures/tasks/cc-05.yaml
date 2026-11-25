@@ -1,0 +1,9 @@
+id: cc-05
+app: chore-chart
+category: theme
+tier: 1
+prompt: "Make it green instead of blue."
+may_touch: ["theme.json"]
+expect_regions: ["theme.json #accent"]
+verify: verify/cc-05.test.mjs
+decline: false

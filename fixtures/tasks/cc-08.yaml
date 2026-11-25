@@ -1,0 +1,9 @@
+id: cc-08
+app: chore-chart
+category: model
+tier: 3
+prompt: "When I add a chore, suggest how many points it's worth."
+may_touch: ["screens/*.js", "seams/*.js", "index.html"]
+expect_regions: [".func#addForm"]
+verify: verify/cc-08.test.mjs
+decline: false

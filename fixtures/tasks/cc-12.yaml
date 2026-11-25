@@ -1,0 +1,9 @@
+id: cc-12
+app: chore-chart
+category: layout
+tier: 2
+prompt: "On the board, put the people with the most points first."
+may_touch: ["screens/board.js", "seams/*.js"]
+expect_regions: [".func#render"]
+verify: verify/cc-12.test.mjs
+decline: false

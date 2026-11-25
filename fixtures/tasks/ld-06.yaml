@@ -1,0 +1,9 @@
+id: ld-06
+app: letter-drop
+category: store
+tier: 3
+prompt: "Remember the high score."
+may_touch: ["screens/game.js", "seams/*.js", "index.html"]
+expect_regions: [".func#startGame", ".func#renderMenu"]
+verify: verify/ld-06.test.mjs
+decline: false

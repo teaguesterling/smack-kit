@@ -1,0 +1,9 @@
+id: ld-01
+app: letter-drop
+category: data
+tier: 1
+prompt: "Use only the letters in my name: M, I, A."
+may_touch: ["data/levels.json"]
+expect_regions: ["data/levels.json"]
+verify: verify/ld-01.test.mjs
+decline: false

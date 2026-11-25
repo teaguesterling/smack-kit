@@ -1,0 +1,9 @@
+id: s-03
+app: sample
+category: seam
+tier: 2
+prompt: "A task whose verifier always passes."
+may_touch: ["seams/double.js"]
+expect_regions: [".func#double"]
+verify: verify/s-03.test.mjs
+decline: false

@@ -1,0 +1,8 @@
+[
+  {"name":"dishes","every":"daily","points":2},
+  {"name":"feed the fish","every":"daily","points":1},
+  {"name":"set the table","every":"school-days","points":1},
+  {"name":"tidy the hall","every":"school-days","points":2},
+  {"name":"bins","every":"weekly","points":1},
+  {"name":"hoover the stairs","every":"weekly","points":3}
+]

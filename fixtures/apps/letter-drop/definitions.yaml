@@ -1,0 +1,10 @@
+# What the words in this game mean. data/schema/levels.json mirrors the term values (x-term).
+terms:
+  speed:
+    means: "how fast letters fall in a level"
+    values: [slow, medium, fast]
+  pool:
+    means: "the letters or words a level drops"
+good:
+  level:
+    - "a 5-year-old can catch most letters at slow"

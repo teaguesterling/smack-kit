@@ -1,0 +1,8 @@
+id: rl-05
+app: reading-log
+category: model
+tier: 3
+prompt: "Suggest a next book for each child, based on what they have read."
+may_touch: ["index.html", "screens/*.js", "seams/*.js", "app.json", "data/schema/*.json", "app.css"]
+verify: verify/rl-05.test.mjs
+decline: false

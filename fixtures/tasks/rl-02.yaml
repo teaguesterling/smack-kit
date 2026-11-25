@@ -1,0 +1,8 @@
+id: rl-02
+app: reading-log
+category: seam
+tier: 3
+prompt: "Show each child's reading streak: how many days in a row they have read, up to today."
+may_touch: ["screens/*.js", "seams/*.js", "index.html", "app.css"]
+verify: verify/rl-02.test.mjs
+decline: false

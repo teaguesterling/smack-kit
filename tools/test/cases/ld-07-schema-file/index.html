@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Letter drop</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+import { applyTheme, header, card, emptyState } from './kit/parts.js';
+import { openStore } from './kit/store.js';
+import { renderMenu, startGame } from './screens/game.js';
+import { call } from './kit/uprompt.js';
+import { validate } from './kit/gate.js';
+import { encouragementMessages, readEncouragement, fallbackEncouragement } from './seams/encourage.js';
+
+const get = p => fetch(p).then(r => r.json());
+const [theme, levels, encourageSchema] = await Promise.all([get('theme.json'), get('data/levels.json'), get('data/schema/encouragement.json')]);
+// Asks the model for one encouraging line; falls back to a fixed line if no model answers or the answer fails the schema.
+async function encourage(levelName, score) {
+  try {
+    const r = await call('encourage', encouragementMessages(levelName, score));
+    const message = readEncouragement(r.text);
+    if (message && validate(encourageSchema, { message }).length === 0) return message;
+  } catch { /* no model bound: use the fallback */ }
+  return fallbackEncouragement(score);
+}
+applyTheme(theme);
+const store = openStore('letter-drop');
+const root = document.getElementById('app');
+const main = document.createElement('main');
+root.replaceChildren(header('Letter drop'), main);
+
+const state = {
+  levels,
+  actions: {
+    play(level) {
+      // Test hook: verifiers drive the game through window.__game.
+      window.__game = startGame(main, level, score => {
+        const note = emptyState(`You scored ${score}.`);
+        main.replaceChildren(card({ title: 'Game over', body: note }));
+        encourage(level.name, score)
+          .then(message => { note.textContent = `You scored ${score}. ${message}`; })
+          .finally(() => setTimeout(menu, 3000));
+      });
+    },
+  },
+};
+function menu() { renderMenu(main, state); }
+const q = new URLSearchParams(location.search);
+const auto = q.get('level');
+if (auto != null && levels[Number(auto)]) state.actions.play(levels[Number(auto)]); else menu();
+</script>
+</body>
+</html>

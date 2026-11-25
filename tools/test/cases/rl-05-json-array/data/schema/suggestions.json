@@ -1,0 +1,1 @@
+{"type":"array","items":{"type":"object","required":["reader","title","reason"],"additionalProperties":false,"properties":{"reader":{"type":"string","maxLength":30},"title":{"type":"string","maxLength":120},"reason":{"type":"string","maxLength":300}}}}

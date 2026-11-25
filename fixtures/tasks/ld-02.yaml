@@ -1,0 +1,9 @@
+id: ld-02
+app: letter-drop
+category: definitions
+tier: 3
+prompt: "Add a super-slow level for my 4-year-old."
+may_touch: ["definitions.yaml", "data/schema/*.json", "data/levels.json", "seams/speed.js"]
+expect_regions: ["definitions.yaml #speed", "data/schema/levels.json #speed", ".func#fallPixelsPerSecond"]
+verify: verify/ld-02.test.mjs
+decline: false

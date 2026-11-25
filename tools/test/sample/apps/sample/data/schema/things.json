@@ -1,0 +1,1 @@
+{"type":"array","items":{"type":"object","properties":{"size":{"type":"string","enum":["small","large"],"x-term":"size"}}}}

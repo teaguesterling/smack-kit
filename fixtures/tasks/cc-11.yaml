@@ -1,0 +1,9 @@
+id: cc-11
+app: chore-chart
+category: definitions
+tier: 3
+prompt: "Bartholomew is only here at weekends."
+may_touch: ["data/people.json", "data/schema/people.json", "definitions.yaml", "seams/rotation.js"]
+expect_regions: [".func#assignWeek"]
+verify: verify/cc-11.test.mjs
+decline: false

@@ -1,0 +1,9 @@
+id: ld-05
+app: letter-drop
+category: theme
+tier: 1
+prompt: "Make it dark."
+may_touch: ["theme.json", "app.css"]
+expect_regions: ["theme.json #bg", "theme.json #text"]
+verify: verify/ld-05.test.mjs
+decline: false

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading log</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+import { applyTheme, header, tabBar } from './kit/parts.js';
+import { openStore } from './kit/store.js';
+import * as month from './screens/month.js';
+import * as add from './screens/add.js';
+
+const get = p => fetch(p).then(r => r.json());
+const [theme, readers, kinds] = await Promise.all([get('theme.json'), get('data/readers.json'), get('data/kinds.json')]);
+applyTheme(theme);
+const store = openStore('reading-log');
+const q = new URLSearchParams(location.search);
+const screens = { month, add };
+const tabs = [{ id: 'month', label: 'Month' }, { id: 'add', label: 'Add reading' }];
+let active = q.get('tab') ?? 'month';
+
+const state = {
+  readers, kinds,
+  today: q.get('today') ?? new Date().toISOString().slice(0, 10),
+  entries: (await store.get('entries')) ?? [],
+  actions: {
+    async addEntry(e) { state.entries = [...state.entries, e]; await store.set('entries', state.entries); active = 'month'; draw(); },
+  },
+};
+
+const root = document.getElementById('app');
+function draw() {
+  const main = document.createElement('main');
+  screens[active].render(main, state);
+  root.replaceChildren(header('Reading log'), main, tabBar(tabs, active, id => { active = id; draw(); }));
+}
+draw();
+</script>
+</body>
+</html>

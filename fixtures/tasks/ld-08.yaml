@@ -1,0 +1,8 @@
+id: ld-08
+app: letter-drop
+category: data
+tier: 1
+prompt: "Add a level called Numbers with the digits 1 to 9, at medium speed."
+may_touch: ["data/levels.json"]
+verify: verify/ld-08.test.mjs
+decline: false

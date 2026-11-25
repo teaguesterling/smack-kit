@@ -1,0 +1,13 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["name", "every", "points"],
+    "additionalProperties": false,
+    "properties": {
+      "name": {"type": "string", "maxLength": 40},
+      "every": {"type": "string", "enum": ["daily", "weekly", "school-days", "weekends"], "x-term": "every"},
+      "points": {"type": "integer", "enum": [1, 2, 3, 4, 5], "x-term": "points"}
+    }
+  }
+}

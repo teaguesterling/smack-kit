@@ -1,0 +1,1 @@
+{"type":"array","items":{"type":"string","enum":["book","comic","magazine","audiobook"],"x-term":"kind"}}

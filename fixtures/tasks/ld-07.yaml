@@ -1,0 +1,8 @@
+id: ld-07
+app: letter-drop
+category: model
+tier: 3
+prompt: "After each game, have the AI say something encouraging."
+may_touch: ["index.html", "screens/*.js", "seams/*.js", "app.json", "data/schema/*.json"]
+verify: verify/ld-07.test.mjs
+decline: false
