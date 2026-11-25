@@ -7,6 +7,8 @@ of instructions, and one quiet command, `kit check`. That command says whether t
 
 Status: early. The app shape, `kit check`, and the task fixtures work and have tests. The API can change.
 
+[RESULTS.md](RESULTS.md) has three nights of measured runs: small-model agents on the 11 held-out tasks.
+
 ## The app shape
 
 A smack app is plain static files with no build step:
