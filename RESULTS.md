@@ -85,7 +85,8 @@ scope check refuses. The other 6 failed the verifier or the app's checks. A shor
 
 - **Pick the model first.** Model choice moved the rate by about 40 points (59% to 16%). No card change moved it by more
   than a few cells.
-- **Keep the card short if you like.** The 140-word card did as well as the 479-word one with a 35B model.
+- **A short card is an option.** With a 35B model, the 140-word card was not measurably worse than the 479-word
+  one (+2/−1 over 32 cells). That is no effect measured, not proof of none.
 - **Model-call tasks need more help than a card.** We read this as the next thing for the kit to fix.
 
 ## Reproduce
