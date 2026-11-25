@@ -26,6 +26,8 @@ export function chromePath() {
   if (process.env.CHROME_PATH) return process.env.CHROME_PATH;
   const base = path.join(process.env.HOME ?? '', '.cache', 'ms-playwright');
   const dirs = fs.existsSync(base) ? fs.readdirSync(base).filter(d => /^chromium-\d+$/.test(d)).sort((a, b) => +b.split('-')[1] - +a.split('-')[1]) : [];
-  for (const d of dirs) { const p = path.join(base, d, 'chrome-linux64', 'chrome'); if (fs.existsSync(p)) return p; }
+  for (const d of dirs) for (const sub of ['chrome-linux64', 'chrome-linux']) {   // Playwright 1.49 writes chrome-linux
+    const p = path.join(base, d, sub, 'chrome'); if (fs.existsSync(p)) return p;
+  }
   throw new Error('no Chromium found: set CHROME_PATH');
 }
